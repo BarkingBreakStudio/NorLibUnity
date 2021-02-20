@@ -9,6 +9,6 @@ public class StringEventTransmitter : MonoBehaviour
     [ContextMenu("Do Something")]
     public void DoSomething()
     {
-        _channel.OnEventRaised("test");
+        _channel.RaiseEvent("test");
     }
 }
