@@ -7,18 +7,18 @@ public class StringEventListener : MonoBehaviour
 	[SerializeField] private StringEventChannelSO _channel = default;
 	public UnityEvent<string> OnEventRaised = new UnityEvent<string>();
 
-	private void OnEnable()
+	protected void OnEnable()
 	{
 		_channel?.AddListener(Respond);
 	}
 
-	private void OnDisable()
+	protected void OnDisable()
 	{
 		_channel?.RemoveListener(Respond);
 
 	}
 
-	private void Respond(string value)
+	protected virtual void Respond(string value)
 	{
 		if (OnEventRaised != null)
 			OnEventRaised.Invoke(value);
