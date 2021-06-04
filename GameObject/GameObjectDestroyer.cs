@@ -7,5 +7,10 @@ public class GameObjectDestroyer : MonoBehaviour
     public void DestroyGameObject()
     {
         Destroy(gameObject);
-    } 
+    }
+
+    public void DestroyGameObject(GameObject gameObj)
+    {
+        Destroy(gameObj);
+    }
 }

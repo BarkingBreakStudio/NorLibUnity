@@ -16,6 +16,15 @@ public class GameObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(MinimumPosition && !MaximumPosition){
+            MaximumPosition = MinimumPosition;
+        }
+        if (MaximumPosition && !MinimumPosition)
+        {
+            MinimumPosition = MaximumPosition;
+        }
+
+
         SpawnRandomObject();
     }
 
@@ -32,8 +41,19 @@ public class GameObjectSpawner : MonoBehaviour
 
     void SpawnRandomObject()
     {
-        Vector3 position = Vector3.Lerp(MinimumPosition.position, MaximumPosition.position, Random.value);
-        GameObject gobj = objects2Spawn[Random.Range(0, objects2Spawn.Count)];
-        Instantiate<GameObject>(gobj, position, Quaternion.identity, transform);
+        if (objects2Spawn.Count > 0)
+        {
+            Vector3 position = Vector3.Lerp(MinimumPosition.position, MaximumPosition.position, Random.value);
+            GameObject gobj = objects2Spawn[Random.Range(0, objects2Spawn.Count)];
+            Instantiate<GameObject>(gobj, position, MinimumPosition.rotation, transform);
+        }
+    }
+
+    public void SpawnUpTo(int amount)
+    {
+        while(transform.childCount < amount)
+        {
+            SpawnRandomObject();
+        }
     }
 }
