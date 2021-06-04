@@ -6,4 +6,4 @@ And I have a lot of fun writing librarys componeint, that do single tasks very w
 ## Instruction
 
 This repo is designed to be used as a **subtree** in your Unity Project.
-Hvae fun!
+Have fun!
